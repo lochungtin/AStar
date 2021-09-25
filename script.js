@@ -232,6 +232,9 @@ const reconstruct = detailList => {
 
 // start pathfind
 const start = async () => {
+    // clear original path
+    state = state.map(row => row.map(cell => cell === REP_EXPLORED || cell === REP_PATH ? REP_EMPTY : cell));
+
     // create closed list
     let closedList = [];
     for (let i = 0; i < GRID_DIM_HEIGHT; ++i)
