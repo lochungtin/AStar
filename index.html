@@ -13,10 +13,39 @@
 <body class='absCenter'>
     <main class='col-spread-center'>
         <p class='title-text'>
-            A Star Pathfinding Algorithm Visualiser
+            <span>A Star Pathfinding</span> Algorithm Visualiser
         </p>
 
-        <canvas id='main' height='627px' width='1002px'/>
+        <canvas id='main' height='627px' width='1002px'>
+            Your browser does not support this website
+        </canvas>
+
+        <div class='ctrl-panel row-spread-center'>
+            <button class='ctrl-panel-btn row-spread-center' onclick='toggleEditMode()'>
+                <div class='ctrl-panel-btn-icon-circle'>
+
+                </div>
+                <p id='editModeBtnText' class='ctrl-panel-btn-text'>
+                    DELETE MODE
+                </p>
+            </button>
+            <button class='ctrl-panel-btn row-spread-center' onclick='init()'>
+                <div class='ctrl-panel-btn-icon-circle'>
+
+                </div>
+                <p class='ctrl-panel-btn-text'>
+                    CLEAR GRID
+                </p>
+            </button>
+            <button class='ctrl-panel-btn row-spread-center'>
+                <div class='ctrl-panel-btn-icon-circle'>
+
+                </div>
+                <p class='ctrl-panel-btn-text'>
+                    START
+                </p>
+            </button>
+        </div>
     </main>
 </body>
 

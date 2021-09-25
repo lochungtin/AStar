@@ -34,10 +34,39 @@ button {
   outline: none;
 }
 
+span {
+    color: #a163ba; 
+}
+
 main {
-    height: 750px;
+    height: 800px;
 }
 
 .title-text {
     font-size: 36px;
+}
+
+.ctrl-panel {
+    height: 50px;
+    width: 650px;
+}
+
+.ctrl-panel-btn {
+    border-radius: 25px;
+    background-color: #282828;
+    height: 50px;
+    padding-left: 7px;
+    width: 200px;
+}
+
+.ctrl-panel-btn-icon-circle {
+    background-color: #a163ba;
+    border-radius: 18px;
+    height: 36px;
+    width: 36px;
+}
+
+.ctrl-panel-btn-text {
+    text-align: center;
+    width: 157px;
 }
