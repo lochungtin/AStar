@@ -64,6 +64,7 @@ const COLOR_TILE_START = '#4B79D1';
 const COLOR_TILE_GOAL = '#D63877';
 const COLOR_TILE_OBSTACLE = '#545454';
 const COLOR_TILE_PATH = '#A163BA';
+const COLOR_TILE_EXPLORED = '#39234A';
 
 // representation
 const REP_EMPTY = 0;
@@ -71,6 +72,7 @@ const REP_START = 1;
 const REP_GOAL = 2;
 const REP_OBSTACLE = 3;
 const REP_PATH = 4;
+const REP_EXPLORED = 5;
 
 // display color map
 const DISPLAY_MAP = {
@@ -79,6 +81,7 @@ const DISPLAY_MAP = {
     2: COLOR_TILE_GOAL,
     3: COLOR_TILE_OBSTACLE,
     4: COLOR_TILE_PATH,
+    5: COLOR_TILE_EXPLORED,
 };
 
 // dims
@@ -281,8 +284,11 @@ const start = async () => {
         for (let i = 0; i < neighbours.length; ++i) {
             let neighbour = neighbours[i];
 
+            let nX = neighbour.getX();
+            let nY = neighbour.getY();
+
             if (neighbour.equals(POS_END)) {
-                detailsList[neighbour.getY()][neighbour.getX()].setParent(topCoord);
+                detailsList[nY][nX].setParent(topCoord);
                 let path = reconstruct(detailsList);
 
                 // draw path on canvas
@@ -291,17 +297,20 @@ const start = async () => {
 
                     state[coord.getY()][coord.getX()] = REP_PATH;
 
-                    await sleep(5);
+                    await sleep(3);
                     updateCanvas();
                 }
 
                 return;
             }
             else {
-                let neighbourDetails = detailsList[neighbour.getY()][neighbour.getX()];
+                let neighbourDetails = detailsList[nY][nX];
                 let g = detailsList[y][x].getG() + 1;
                 let h = heuristic(neighbour)
                 let score = g + h;
+
+                state[nY][nX] = REP_EXPLORED;
+                updateCanvas();
 
                 if (neighbourDetails.getF() === -1 || neighbourDetails.getF() > score) {
                     // put successor into open list
@@ -315,6 +324,8 @@ const start = async () => {
                     neighbourDetails.setParent(topCoord);
                 }
             }
+
+            await sleep(1);
         }
     }
 }
