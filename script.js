@@ -26,6 +26,7 @@ const GRID_SQR_DIM = 23;
 const GRID_SQR_GAP = 2;
 const GRID_SQR_PADDING = 2;
 
+
 // ===== vars =====
 // drag trigger
 let dragTrig = false;
@@ -40,6 +41,9 @@ let state;
 let canvas;
 let ctx;
 
+
+// ===== functions =====
+// reset grid
 const init = () => {
     // reset state
     state = [];
@@ -54,6 +58,7 @@ const init = () => {
     updateCanvas();
 }
 
+// canvas on drag event
 const canvasOnDrag = (mouseX, mouseY) => {
     // map to dim
     stateX = Math.floor((mouseX - 1) / (GRID_SQR_DIM + GRID_SQR_PADDING));
@@ -72,6 +77,7 @@ const canvasOnDrag = (mouseX, mouseY) => {
     updateCanvas();
 }
 
+// toggle canvas drag edit mode
 const toggleEditMode = () => {
     // update var
     addMode = !addMode;
@@ -79,6 +85,11 @@ const toggleEditMode = () => {
     // update button text
     let btnText = document.getElementById('editModeBtnText');
     btnText.innerHTML = addMode ? 'DELETE MODE' : 'ADD MODE';
+}
+
+// start path find algorithm
+const start = () => {
+
 }
 
 // update canvas
