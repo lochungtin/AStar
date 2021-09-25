@@ -170,6 +170,8 @@ const updateCanvas = () => {
         }
 }
 
+// sleep function
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 // ===== A STAR ALGORITHM =====
 // make neighbours
@@ -226,9 +228,7 @@ const reconstruct = detailList => {
 }
 
 // start pathfind
-const start = () => {
-    console.log('start');
-
+const start = async () => {
     // create closed list
     let closedList = [];
     for (let i = 0; i < GRID_DIM_HEIGHT; ++i)
@@ -285,10 +285,15 @@ const start = () => {
                 detailsList[neighbour.getY()][neighbour.getX()].setParent(topCoord);
                 let path = reconstruct(detailsList);
 
-                path.forEach(coord => {
+                // draw path on canvas
+                for (let i = 1; i < path.length; ++i) {
+                    let coord = path[i];
+
                     state[coord.getY()][coord.getX()] = REP_PATH;
+
+                    await sleep(5);
                     updateCanvas();
-                });
+                }
 
                 return;
             }
