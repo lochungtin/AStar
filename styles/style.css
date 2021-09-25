@@ -33,3 +33,11 @@ button {
   border: none;
   outline: none;
 }
+
+main {
+    height: 750px;
+}
+
+.title-text {
+    font-size: 36px;
+}
